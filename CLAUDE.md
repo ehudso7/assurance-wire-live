@@ -1,7 +1,7 @@
-<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=1.2.1 — do not edit inside this block; edits will be overwritten by `ehgov sync`. Project-owned content belongs in the PROJECT block. -->
+<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=2.0.0 — do not edit inside this block; edits will be overwritten by `malik sync`. Project-owned content belongs in the PROJECT block. -->
 # CLAUDE.md — assurance-wire-live
 
-Governance: `ehudso7/project-governance` v1.2.1 · profile `web-saas` · criticality `medium`
+Governance: `ehudso7/project-governance` v2.0.0 · profile `web-saas` · criticality `medium`
 
 You are working in `assurance-wire-live` (web-saas). This project is governed: how you work here is defined by the pinned governance version above, not by ad-hoc judgment. `AGENTS.md` holds the cross-agent constitution; this file adds Claude Code specifics.
 
@@ -33,7 +33,7 @@ You are working in `assurance-wire-live` (web-saas). This project is governed: h
 | security | `security-review` |
 | dependency | `dependency-upgrade` |
 
-Graph definitions live in the governance source (`graphs/`); render one with `ehgov graph render <id>`.
+Graph definitions live in the governance source (`graphs/`); render one with `malik graph render <id>`.
 
 ## Sensitive paths
 
@@ -49,7 +49,7 @@ Changes under these paths trigger sensitive-path policies (extra review, approva
 
 ## Policies in force
 
-Required policy sets: `base`, `security`, `delivery`, `ai-agents`. Machine-readable definitions live in the governance source (`policies/`); run `ehgov inspect` for the resolved list.
+Required policy sets: `base`, `security`, `delivery`, `ai-agents`. Machine-readable definitions live in the governance source (`policies/`); run `malik inspect` for the resolved list.
 <!-- EH-GOV:END GENERATED -->
 
 <!-- EH-GOV:BEGIN PROJECT -->

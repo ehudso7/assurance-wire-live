@@ -1,0 +1,3 @@
+
+# malik sync backup snapshots — redundant with git history, never commit.
+.governance/backups/
