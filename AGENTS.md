@@ -1,9 +1,9 @@
-<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=2.0.0 — do not edit inside this block; edits will be overwritten by `malik sync`. Project-owned content belongs in the PROJECT block. -->
+<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=2.0.1 — do not edit inside this block; edits will be overwritten by `malik sync`. Project-owned content belongs in the PROJECT block. -->
 # AGENTS.md — assurance-wire-live
 
 Cross-agent constitution for `assurance-wire-live`. Applies to every AI coding agent operating in this repository (Claude Code, Codex, and future runtimes). Runtime-specific files (`CLAUDE.md`, etc.) defer to this one.
 
-Governance: `ehudso7/project-governance` v2.0.0 · profile `web-saas` · criticality `medium`
+Governance: `ehudso7/project-governance` v2.0.1 · profile `web-saas` · criticality `medium`
 
 ## Constitution
 
