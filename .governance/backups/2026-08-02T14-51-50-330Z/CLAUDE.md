@@ -1,7 +1,7 @@
-<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=1.2.1 — do not edit inside this block; edits will be overwritten by `ehgov sync`. Project-owned content belongs in the PROJECT block. -->
+<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=1.2.0 — do not edit inside this block; edits will be overwritten by `ehgov sync`. Project-owned content belongs in the PROJECT block. -->
 # CLAUDE.md — assurance-wire-live
 
-Governance: `ehudso7/project-governance` v1.2.1 · profile `web-saas` · criticality `medium`
+Governance: `ehudso7/project-governance` v1.2.0 · profile `web-saas` · criticality `medium`
 
 You are working in `assurance-wire-live` (web-saas). This project is governed: how you work here is defined by the pinned governance version above, not by ad-hoc judgment. `AGENTS.md` holds the cross-agent constitution; this file adds Claude Code specifics.
 
