@@ -1,20 +1,20 @@
 {
-  "governance_version": "2.0.1",
+  "governance_version": "2.3.0",
   "files": {
     "CLAUDE.md": {
-      "generated_sha256": "15c0483fe222b28155a7a1e5279e175cd7399655c387945408c4a8cdf45d816e"
+      "generated_sha256": "47896f836171ebd07c451ea7a500546905bbbf06d823bc1e50f4dbad80fd6673"
     },
     "AGENTS.md": {
-      "generated_sha256": "ae97c09089896a77bdd73df0924a42c192d51b69d44b75ce5e1d9a4e6fb111cd"
+      "generated_sha256": "37f473b3c06a51e3abcb5c95bf0287a4da90a59d83fbe9b2bbb294b6b267249d"
     },
     "PROJECT.md": {
-      "generated_sha256": "58b1fdd7812cbe77920aab49b633a09826d665478c118406e098bf47a72c7232"
+      "generated_sha256": "f33285b25e965766fdc855e3728e97cd5e782a9cd00ec98f6d1ece1cf1314183"
     },
     "GRAPH.md": {
-      "generated_sha256": "7882125b95414ee69c0abac450b32b250ed5251faeb405fea2ab9999cb802d2f"
+      "generated_sha256": "f65a94c026f7fbdbffc6422b883ab4ac130efdc88b027b69d4f602537eabc628"
     },
     "EVIDENCE.md": {
-      "generated_sha256": "7f4fba889a102fcf75d79adf525a0ab1778ecda2e079e49f9e297796730b1a86"
+      "generated_sha256": "80236d15e2107518e6749c4c310ab84c9d19cb57452ed0c518b654b79b41ec5f"
     },
     "DECISIONS.md": {
       "generated_sha256": "f46e917abaab12a092d33df546dd6ede16fb41d044fc8acfbf277841f29481ca"
