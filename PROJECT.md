@@ -1,4 +1,4 @@
-<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=2.3.0 — do not edit inside this block; edits will be overwritten by `malik sync`. Project-owned content belongs in the PROJECT block. -->
+<!-- EH-GOV:BEGIN GENERATED source=ehudso7/project-governance version=2.4.0 — do not edit inside this block; edits will be overwritten by `malik sync`. Project-owned content belongs in the PROJECT block. -->
 # PROJECT.md — assurance-wire-live
 
 | Field | Value |
@@ -8,7 +8,7 @@
 | Criticality | medium |
 | Lifecycle | active |
 | Governance profile | `web-saas` |
-| Governance version | 2.3.0 (pinned in `GOVERNANCE.yaml`) |
+| Governance version | 2.4.0 (pinned in `GOVERNANCE.yaml`) |
 
 ## What this project is
 
