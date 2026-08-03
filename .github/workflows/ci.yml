@@ -1,0 +1,24 @@
+# CI for the change-assurance certification sandbox. Runs the repo's real
+# (minimal) test suite. Its workflow_run events are what AgentGate observes
+# and records as change.workflow_observed (workflow_succeeded) — a green CI
+# run here is never represented as a production deployment.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest discover -s tests -t . -v
