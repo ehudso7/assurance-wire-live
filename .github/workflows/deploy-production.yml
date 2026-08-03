@@ -1,0 +1,68 @@
+# Sandbox "production deployment" for the change-assurance certification.
+#
+# This repository is the dedicated certification target: its production
+# environment is the GitHub environment named `production`, and deploying
+# means recording a real GitHub Deployment for the pushed head SHA and then
+# a real `deployment_status: success` once the (sandbox) deploy step
+# completes. AgentGate consumes these genuine deployment / deployment_status
+# webhook events to record change.deployment_observed and
+# change.outcome_verified for the authorized SHA. Nothing here fabricates an
+# AgentGate-side signal: the events are real GitHub objects for this repo's
+# declared production environment.
+name: Deploy production
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Create deployment
+        id: create
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const dep = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: "production",
+              auto_merge: false,
+              required_contexts: [],
+              description: "Sandbox production deployment for change-assurance certification",
+            });
+            if (dep.status !== 201) {
+              core.setFailed(`deployment not created: ${dep.status}`);
+              return;
+            }
+            core.setOutput("deployment_id", dep.data.id);
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.data.id,
+              state: "in_progress",
+            });
+      - name: Deploy (sandbox target)
+        run: |
+          python -m py_compile app.py
+          echo "sandbox deploy of ${GITHUB_SHA} complete"
+      - name: Report deployment status
+        if: always()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const id = Number("${{ steps.create.outputs.deployment_id }}");
+            if (!id) { core.setFailed("no deployment id recorded"); return; }
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: id,
+              state: "${{ job.status }}" === "success" ? "success" : "failure",
+            });
