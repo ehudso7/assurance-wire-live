@@ -1,0 +1,15 @@
+# Throwaway approval-gate drill artifact — 2026-08-04
+#
+# Purpose: deterministically exercise the AgentGate Change Assurance
+# require_approval path (production-named configuration file).
+#
+# This file is INERT: nothing in this repository reads config/*.yaml
+# (app.py has no config loader), it is referenced by no workflow, and it
+# deploys nothing. It is safe to delete at any time; deleting it fully
+# reverses this change.
+drill:
+  id: approval-gate-throwaway-20260804
+  kind: controlled-drill
+  loaded_by: nothing
+  deployable: false
+  reversible: true
