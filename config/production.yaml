@@ -1,4 +1,4 @@
-# Approval-gate certification drill (2026-08-04).
+# Approval-gate certification drill (2026-08-04) — rev 2.
 # This file is intentionally NOT consumed by any code, test, or workflow in
 # this repository. It exists solely so the UIE classifier deterministically
 # labels this change CONFIGURATION x PRODUCTION (touches_production_config),
@@ -7,3 +7,4 @@ drill:
   purpose: prove-approval-gate
   consumed_by: nothing
   reversible: true
+  revision: 2
