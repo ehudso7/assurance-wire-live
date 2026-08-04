@@ -1,0 +1,9 @@
+# Approval-gate certification drill (2026-08-04).
+# This file is intentionally NOT consumed by any code, test, or workflow in
+# this repository. It exists solely so the UIE classifier deterministically
+# labels this change CONFIGURATION x PRODUCTION (touches_production_config),
+# which AgentGate policy maps to require_approval. Safe to delete at any time.
+drill:
+  purpose: prove-approval-gate
+  consumed_by: nothing
+  reversible: true
