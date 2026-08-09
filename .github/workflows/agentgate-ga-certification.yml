@@ -1,0 +1,88 @@
+name: AgentGate Change Assurance GA certification
+
+on:
+  workflow_dispatch:
+    inputs:
+      agentgate_url:
+        description: Production AgentGate API base URL
+        required: true
+        default: https://agentgate-api-snowy.vercel.app
+      timeout_seconds:
+        description: Maximum time to wait for human approval and production outcome
+        required: true
+        default: '5400'
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+
+concurrency:
+  group: agentgate-change-assurance-ga-certification
+  cancel-in-progress: false
+
+jobs:
+  certify:
+    name: live-certification
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      CERT_REPO: ${{ github.repository }}
+      AGENTGATE_URL: ${{ inputs.agentgate_url }}
+      CERT_TIMEOUT_SECONDS: ${{ inputs.timeout_seconds }}
+      CERT_POLL_SECONDS: '10'
+      CERT_ARTIFACT_DIR: artifacts
+      GH_TOKEN: ${{ secrets.AGENTGATE_CERT_GITHUB_TOKEN }}
+      AGENTGATE_CERT_API_KEY: ${{ secrets.AGENTGATE_CERT_API_KEY }}
+      AGENTGATE_VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.AGENTGATE_VERCEL_AUTOMATION_BYPASS_SECRET }}
+
+    steps:
+      - name: Require dedicated certification credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$GH_TOKEN" || { echo 'AGENTGATE_CERT_GITHUB_TOKEN is required'; exit 1; }
+          test -n "$AGENTGATE_CERT_API_KEY" || { echo 'AGENTGATE_CERT_API_KEY is required'; exit 1; }
+
+      - name: Checkout certification repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.AGENTGATE_CERT_GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: Validate harness syntax
+        run: node --check scripts/agentgate-ga-certify.mjs
+
+      - name: Execute live certification
+        run: node scripts/agentgate-ga-certify.mjs
+
+      - name: Locate certification artifact
+        id: evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE="$(find artifacts -maxdepth 1 -type f -name 'agentgate-change-assurance-ga-*.json' | head -n 1)"
+          test -n "$FILE"
+          echo "path=$FILE" >> "$GITHUB_OUTPUT"
+          shasum -a 256 "$FILE"
+
+      - name: Attest certification evidence
+        id: attest
+        uses: actions/attest@v4
+        with:
+          subject-path: ${{ steps.evidence.outputs.path }}
+
+      - name: Verify GitHub attestation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh attestation verify "${{ steps.evidence.outputs.path }}" --repo "${{ github.repository }}"
+
+      - name: Upload certification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentgate-change-assurance-ga-certification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts/*.json
+          if-no-files-found: error
+          retention-days: 90
