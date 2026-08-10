@@ -86,3 +86,5 @@ jobs:
             artifacts/*.json
           if-no-files-found: error
           retention-days: 90
+
+# AgentGate GA approval-path certification retrigger — no runtime behavior change
