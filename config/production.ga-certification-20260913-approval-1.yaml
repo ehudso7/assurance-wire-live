@@ -1,0 +1,6 @@
+# Ruligent Change Assurance GA certification — approval case
+certification_case: approval
+session_started_at: 2026-09-13T23:39:00Z
+environment: production
+requires_human_approval: true
+source_issue: ehudso7/agentgate#111
