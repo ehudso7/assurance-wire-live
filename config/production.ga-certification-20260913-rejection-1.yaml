@@ -1,0 +1,6 @@
+certification:
+  run: ruligent-ga-20260913-rejection-1
+  case: rejection
+  inert: true
+  requires_human_rejection: true
+  production_behavior_changed: false
