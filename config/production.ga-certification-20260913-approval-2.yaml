@@ -1,0 +1,6 @@
+certification: ruligent-change-assurance-ga
+case: approval
+run: 2026-09-13.2
+target_org: NSAI Emagine
+requires_human_approval: true
+runtime_effect: none
