@@ -1,0 +1,3 @@
+Ruligent GA certification fixture — supersession head 3.
+
+This inert file exists only to prove that after the production remediation, a new PR head automatically makes the previous head's pending human approval non-actionable before the old GitHub check is neutralized.
