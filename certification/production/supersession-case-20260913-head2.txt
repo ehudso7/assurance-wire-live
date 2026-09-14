@@ -1,0 +1,6 @@
+Ruligent Change Assurance live certification fixture
+case=supersession
+stage=revised-head
+production_named=true
+runtime_effect=none
+purpose=prove prior-head authorization cannot carry forward after synchronize
