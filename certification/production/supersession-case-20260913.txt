@@ -1,0 +1,6 @@
+Ruligent Change Assurance live certification fixture
+case=supersession
+stage=initial-head
+production_named=true
+runtime_effect=none
+purpose=prove exact-head authorization and stale-head supersession
